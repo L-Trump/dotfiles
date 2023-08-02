@@ -1,0 +1,115 @@
+actions:
+  lns: ln -sf {0} {1}
+config:
+  backup: true
+  create: true
+  dotpath: dotfiles
+dotfiles:
+  f_gitconfig:
+    src: gitconfig
+    dst: ~/.gitconfig
+  f_zshrc:
+    src: shell/zshrc
+    dst: ~/.zshrc
+  f_zshenv:
+    src: shell/zshenv
+    dst: ~/.zshenv
+  f_zprofile:
+    src: shell/zprofile
+    dst: ~/.zprofile
+  d_tmux:
+    src: shell/tmux
+    dst: ~/.config/tmux
+    actions:
+    - lns "~/.config/tmux/tmux.conf" "~/.tmux.conf"
+  d_ozsh_custom:
+    src: shell/oh-my-zsh/custom
+    dst: ~/.oh-my-zsh/custom
+  f_xresources:
+    src: desktop/Xresources
+    dst: ~/.Xresources
+  f_xinitrc:
+    src: desktop/xinitrc
+    dst: ~/.xinitrc
+  d_i3:
+    src: desktop/i3
+    dst: ~/.config/i3
+  d_picom:
+    src: desktop/picom
+    dst: ~/.config/picom
+  d_polybar:
+    src: desktop/polybar
+    dst: ~/.config/polybar
+  f_betterlockscreenrc:
+    src: desktop/betterlockscreenrc
+    dst: ~/.config/betterlockscreenrc
+  d_wallpapers_meumy:
+    src: desktop/appearance/Wallpapers/Meumy
+    dst: ~/Pictures/Wallpapers/Meumy
+  d_icons:
+    src: desktop/appearance/icons
+    dst: ~/.icons
+    chmod: '700'
+  f_fehbg:
+    src: desktop/appearance/fehbg
+    dst: ~/.fehbg
+    chmod: '754'
+  d_merry_cursors:
+    src: desktop/appearance/merry_cursors
+    dst: ~/.local/share/icons/merry_cursors
+  d_gtk-3.0:
+    src: desktop/appearance/gtk-3.0
+    dst: ~/.config/gtk-3.0
+    chmod: '700'
+  d_alacritty:
+    src: terminal/alacritty
+    dst: ~/.config/alacritty
+  d_nvim:
+    src: nvim
+    dst: ~/.config/nvim
+  f_offlineimap.py:
+    src: mail/offlineimap.py
+    dst: ~/.offlineimap.py
+  f_offlineimaprc:
+    src: mail/offlineimaprc
+    dst: ~/.offlineimaprc
+  d_aerc:
+    src: mail/aerc
+    dst: ~/.config/aerc
+  f_aerc.desktop:
+    src: mail/aerc.desktop
+    dst: ~/.local/share/applications/aerc.desktop
+  d_imapnotify:
+    src: mail/imapnotify
+    dst: ~/.config/imapnotify
+  d_zathura:
+    src: applications/zathura
+    dst: ~/.config/zathura
+  f_nnn.desktop:
+    src: applications/nnn/nnn.desktop
+    dst: ~/.local/share/applications/nnn.desktop
+  d_xdg‐desktop‐portal‐termfilechooser:
+    src: applications/nnn/xdg-desktop-portal-termfilechooser
+    dst: ~/.config/xdg-desktop-portal-termfilechooser
+  d_mpv:
+    src: applications/mpv
+    dst: ~/.config/mpv
+    chmod: '700'
+    upignore:
+      - watch_later
+  d_onedrive:
+    src: applications/onedrive
+    dst: ~/.config/onedrive
+    upignore:
+      - '!config'
+      - '!sync_list'
+      - '[a-zA-Z0-9.\-]*'
+  d_custom_scripts:
+    src: scripts
+    dst: ~/.local/bin/custom_scripts
+    actions:
+    - lns '~/.local/bin/custom_scripts/*' '~/.local/bin/'
+profiles:
+  ltrumpArch:
+    dotfiles:
+    - ALL

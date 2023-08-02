@@ -1,0 +1,93 @@
+# Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
+# get started fast.
+
+[general]
+accounts = yinghaochi-163,ltrump-163,ltrump-qq,ltrump-swjtu
+pythonfile = ~/.offlineimap.py
+
+[Account yinghaochi-163]
+localrepository = yinghaochi-163-Local
+remoterepository = yinghaochi-163-Remote
+utf8foldernames = yes
+
+[Repository yinghaochi-163-Local]
+type = Maildir
+localfolders = ~/Mail/yinghaochi-163
+
+[Repository yinghaochi-163-Remote]
+type = IMAP
+starttls = yes
+ssl = no
+# sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+remotehost = imap.163.com
+remoteuser = yinghaochi@163.com
+remotepasseval = get_pass("yinghaochi-163")
+maxconnections = 5
+createfolders = False
+retrycount = 5
+
+
+[Account ltrump-163]
+localrepository = ltrump-163-Local
+remoterepository = ltrump-163-Remote
+utf8foldernames = yes
+
+[Repository ltrump-163-Local]
+type = Maildir
+localfolders = ~/Mail/ltrump-163
+
+[Repository ltrump-163-Remote]
+type = IMAP
+starttls = yes
+ssl = no
+# sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+remotehost = imap.163.com
+remoteuser = ltrump@163.com
+remotepasseval = get_pass("ltrump-163")
+maxconnections = 5
+createfolders = False
+retrycount = 5
+
+
+[Account ltrump-qq]
+localrepository = ltrump-qq-Local
+remoterepository = ltrump-qq-Remote
+utf8foldernames = yes
+
+[Repository ltrump-qq-Local]
+type = Maildir
+localfolders = ~/Mail/ltrump-qq
+
+[Repository ltrump-qq-Remote]
+type = IMAP
+starttls = no
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+remotehost = imap.qq.com
+remoteuser = ltrump@qq.com
+remotepasseval = get_pass("ltrump-qq")
+maxconnections = 5
+createfolders = False
+retrycount = 5
+
+
+[Account ltrump-swjtu]
+localrepository = ltrump-swjtu-Local
+remoterepository = ltrump-swjtu-Remote
+utf8foldernames = yes
+
+[Repository ltrump-swjtu-Local]
+type = Maildir
+localfolders = ~/Mail/ltrump-swjtu
+
+[Repository ltrump-swjtu-Remote]
+type = IMAP
+starttls = no
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+remotehost = my.swjtu.edu.cn
+remoteuser = ltrump@my.swjtu.edu.cn
+remotepasseval = get_pass("ltrump-swjtu")
+maxconnections = 5
+createfolders = False
+retrycount = 5

@@ -1,0 +1,19 @@
+export QSYS_ROOTDIR="/opt/intelFPGA_standard/20.1/quartus/sopc_builder/bin"
+export QUARTUS_ROOTDIR="/opt/intelFPGA_standard/20.1/quartus/"
+# export INTELFPGAOCLSDKROOT="/opt/intelFPGA_pro/22.1/hld"
+
+. "$HOME/.cargo/env"
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+export GTK_USE_PORTAL=1
+export XDG_CURRENT_DESKTOP=i3
+
+export PATH="${PATH}:$HOME/.local/bin/custom_scripts"
+
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [ "$(tty)" = "/dev/tty1" ] && [ "$(fgconsole 2>/dev/null || echo -1)" -eq 1 ]; then
+  exec startx
+fi
+

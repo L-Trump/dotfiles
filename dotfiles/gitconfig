@@ -1,0 +1,17 @@
+[user]
+	name = L-Trump
+	email = yinghaochi@163.com
+[credential]
+	helper = cache
+[gui]  
+	encoding = utf-8  
+[i18n]  
+	commitencoding = utf-8  
+[svn]  
+	pathnameencoding = utf-8  
+[core]
+	quotepath = false 
+[https]
+	proxy = http://127.0.0.1:7893
+[http]
+	proxy = http://127.0.0.1:7893
