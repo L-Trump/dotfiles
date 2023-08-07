@@ -88,7 +88,7 @@ dotfiles:
   f_nnn.desktop:
     src: applications/nnn/nnn.desktop
     dst: ~/.local/share/applications/nnn.desktop
-  d_xdg‐desktop‐portal‐termfilechooser:
+  d_xdg-desktop-portal-termfilechooser:
     src: applications/nnn/xdg-desktop-portal-termfilechooser
     dst: ~/.config/xdg-desktop-portal-termfilechooser
   d_mpv:
