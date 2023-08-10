@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+if [ $(pgrep "stalonetray") ]; then
+    killall -q stalonetray
+else
+    exec stalonetray
+fi

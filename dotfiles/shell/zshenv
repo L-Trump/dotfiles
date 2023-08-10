@@ -8,3 +8,6 @@ export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|l
 export NNN_PLUG='z:autojump;d:dragdrop;s:!zsh -i*;e:-!nvim "$nnn"*'
 export sel=${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection
 export NNN_BMS="u:$HOME/Onedrive/University;c:$HOME/Codes;d:$HOME/Documents;D:$HOME/Downloads"
+
+export EDITOR="nvim"
+export SYSTEMD_EDITOR="nvim"

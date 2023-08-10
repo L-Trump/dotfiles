@@ -59,6 +59,7 @@ floating_modifier $mod
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec alacritty
+bindsym Mod1+Return exec alacritty
 
 # Bind FlameShot
 exec_always --no-startup-id flameshot
@@ -69,7 +70,7 @@ bindsym $mod+Mod1+s exec flameshot gui
 
 # Get Current Window Information, from https://gist.github.com/jottr/8645010
 bindsym --release $mod+Shift+p exec --no-startup-id notify-send "$(bash i3-get-window-criteria)"
-bindsym $mod+p exec --no-startup-id xrandr --output HDMI-A-0 --primary  --pos 2592x0 --auto && ~/.fehbg; restart
+bindsym $mod+p exec --no-startup-id xrandr --output eDP --pos 0x0 --scale 1.35x1.35 --auto && xrandr --output HDMI-A-0 --primary --pos 2592x0 --auto && ~/.fehbg; restart
 
 # bindsym Print exec shutter -f -e -o ~/Pictures/shot/%Y-%m-%d-%T.png
 # bindsym $mod+Print exec shutter -s -e -o ~/Pictures/shot/%Y-%m-%d-%T.png
@@ -104,6 +105,8 @@ exec_always --no-startup-id sleep 10 && my-mail-sync
 bindsym $mod+Shift+b exec --no-startup-id feh --randomize --bg-fill --recursive ~/Pictures/Wallpapers/Meumy ~/Pictures/Wallpapers/Meumy
 # Add dynamic background!!
 bindsym $mod+b exec --no-startup-id toggle-anime-bg
+# tray bar
+bindsym $mod+m exec --no-startup-id toggle-tray
 
 # Start KDE connect
 exec --no-startup-id /usr/lib/kdeconnectd
@@ -162,7 +165,7 @@ bindsym $mod+l focus right
 bindsym $mod+Shift+t exec --no-startup-id picom-trans -t -w $(xprop -root _NET_ACTIVE_WINDOW | awk '{ print $5 }')
 
 # DeepL Translation
-bindsym $mod+t exec --no-startup-id /usr/bin/deepl-clipboard
+bindsym $mod+t exec --no-startup-id deepl-clipboard
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left

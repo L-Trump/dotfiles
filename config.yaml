@@ -22,9 +22,6 @@ dotfiles:
     dst: ~/.config/tmux
     actions:
     - lns "~/.config/tmux/tmux.conf" "~/.tmux.conf"
-  d_ozsh_custom:
-    src: shell/oh-my-zsh/custom
-    dst: ~/.oh-my-zsh/custom
   f_xresources:
     src: desktop/Xresources
     dst: ~/.Xresources
@@ -38,8 +35,11 @@ dotfiles:
     src: desktop/picom
     dst: ~/.config/picom
   d_polybar:
-    src: desktop/polybar
-    dst: ~/.config/polybar
+    src: desktop/polybar/blocks
+    dst: ~/.config/polybar/blocks
+  f_stalonetrayrc:
+    src: desktop/stalonetrayrc
+    dst: ~/.stalonetrayrc
   f_betterlockscreenrc:
     src: desktop/betterlockscreenrc
     dst: ~/.config/betterlockscreenrc
@@ -67,6 +67,10 @@ dotfiles:
   d_nvim:
     src: nvim
     dst: ~/.config/nvim
+    upignore:
+      - '*'
+    cmpignore:
+      - '*'
   f_offlineimap.py:
     src: mail/offlineimap.py
     dst: ~/.offlineimap.py

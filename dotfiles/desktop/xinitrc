@@ -6,11 +6,11 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export QT_FONT_DPI=144
 # export GDK_SCALE=1.35
 # export GDK_DPI_SCALE=0.7407
-export GTK_IM_MODULE=fcitx5
-export XMODIFIERS=@im=fcitx5
-# export QT_IM_MODULE=fcitx5
+export GTK_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
-export SDL_IM_MODULE=fcitx5
+export SDL_IM_MODULE=fcitx
+export GLFW_IM_MODULE=ibus
 # exec mpd ~/.config/mpd/mpd.conf 
 numlockx &
 xrdb -merge ~/.Xresources
@@ -18,7 +18,8 @@ xrdb -merge ~/.Xresources
 xrandr --output eDP --scale 1.35x1.35
 # xrandr --output HDMI-A-0 --scale 1.30x1.30
 # xrandr --output HDMI-A-0 --primary --pos 2592x0 --scale 0.9999x0.9999 --auto
-xrandr --output HDMI-A-0 --primary --pos 2592x0 --auto
+xrandr --output HDMI-A-0 --primary --pos 2592x0 --scale 1.35x1.35 --auto
+# xrandr --output HDMI-A-0 --primary --pos 2592x0 --auto
 # xrandr --output eDP --auto --output HDMI-A-0 --auto --primary --scale 0.75x0.75 --right-of eDP 
 case $lang in
     en       ) export LANG=en_GB.UTF-8;;

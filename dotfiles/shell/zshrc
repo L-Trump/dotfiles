@@ -107,7 +107,7 @@ source $HOME/.config/user-dirs.dirs
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ssh="TERM=xterm-256color ssh"
 alias nv="nvim"
-alias dg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias clr="clear"
 if [ "$(command -v exa)" ]; then
     unalias -m 'll'
     unalias -m 'l'
