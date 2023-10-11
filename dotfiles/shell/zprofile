@@ -4,9 +4,9 @@ export QUARTUS_ROOTDIR="/opt/intelFPGA_standard/20.1/quartus/"
 
 . "$HOME/.cargo/env"
 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 
 export GTK_USE_PORTAL=1
 export XDG_CURRENT_DESKTOP=i3

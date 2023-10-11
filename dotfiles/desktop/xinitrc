@@ -18,8 +18,8 @@ xrdb -merge ~/.Xresources
 xrandr --output eDP --scale 1.35x1.35
 # xrandr --output HDMI-A-0 --scale 1.30x1.30
 # xrandr --output HDMI-A-0 --primary --pos 2592x0 --scale 0.9999x0.9999 --auto
-xrandr --output HDMI-A-0 --primary --pos 2592x0 --scale 1.35x1.35 --auto
-# xrandr --output HDMI-A-0 --primary --pos 2592x0 --auto
+# xrandr --output HDMI-A-0 --primary --pos 2592x0 --scale 1.35x1.35 --auto
+xrandr --output HDMI-A-0 --primary --pos 2592x0 --auto
 # xrandr --output eDP --auto --output HDMI-A-0 --auto --primary --scale 0.75x0.75 --right-of eDP 
 case $lang in
     en       ) export LANG=en_GB.UTF-8;;
