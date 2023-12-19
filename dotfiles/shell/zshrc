@@ -123,7 +123,7 @@ export QSYS_ROOTDIR="/opt/intelFPGA_standard/21.1/quartus/sopc_builder/bin"
 
 # fnm
 export PATH=/home/ltrump/.fnm:$PATH
-eval "`fnm env`"
+eval "$(fnm env --use-on-cd)"
 
 # golang
 export PATH=/home/ltrump/go/bin:$PATH
