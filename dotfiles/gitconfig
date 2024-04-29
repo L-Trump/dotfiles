@@ -1,6 +1,6 @@
 [user]
-	name = L-Trump
-	email = yinghaochi@163.com
+	{{@@ "name = " + user.name if user and user.name @@}}
+	{{@@ "email = " + user.email if user and user.email @@}}
 [credential]
 	helper = cache
 [gui]  
@@ -11,7 +11,9 @@
 	pathnameencoding = utf-8  
 [core]
 	quotepath = false 
+{%@@ if git is defined and git.proxy is defined @@%}
 [https]
-	proxy = http://127.0.0.1:7893
+	proxy = {{@@ git.proxy @@}}
 [http]
-	proxy = http://127.0.0.1:7893
+	proxy = {{@@ git.proxy @@}}
+{%@@ endif @@%}

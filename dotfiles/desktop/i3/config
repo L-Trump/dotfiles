@@ -51,8 +51,10 @@ bindsym XF86MonBrightnessDown exec echo $(($(cat /sys/class/backlight/amdgpu_bl1
 # Asus Keys (Needs asusctl)
 bindsym XF86KbdBrightnessUp exec kbdbrightnessup 
 bindsym XF86KbdBrightnessDown exec kbdbrightnessdown
-bindsym XF86Launch4 exec asusctl profile -n
-bindsym XF86Launch1 exec asusctl profile -n
+# bindsym XF86Launch4 exec asusctl profile -n
+# bindsym XF86Launch1 exec asusctl profile -n
+bindsym XF86Launch4 exec asus-profile-switch
+bindsym XF86Launch1 exec asus-profile-switch
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -62,11 +64,16 @@ bindsym $mod+Return exec alacritty msg create-window || alacritty
 bindsym Mod1+Return exec alacritty msg create-window || alacritty
 
 # Bind FlameShot
-exec_always --no-startup-id flameshot
-bindsym $mod+Print exec flameshot full
-bindsym Print exec flameshot gui
-bindsym $mod+Shift+s exec flameshot gui 
-bindsym $mod+Mod1+s exec flameshot gui 
+# exec --no-startup-id flameshot
+# bindsym $mod+Print exec flameshot full
+# bindsym Print exec flameshot gui
+# bindsym $mod+Shift+s exec flameshot gui 
+# bindsym $mod+Mod1+s exec flameshot gui 
+exec --no-startup-id snipaste
+bindsym $mod+Print exec snipaste snip --full
+bindsym Print exec snipaste snip
+bindsym $mod+Shift+s exec snipaste snip
+bindsym $mod+Mod1+s exec snipaste snip
 
 # Get Current Window Information, from https://gist.github.com/jottr/8645010
 bindsym --release $mod+Shift+p exec --no-startup-id notify-send "$(bash i3-get-window-criteria)"
@@ -101,13 +108,17 @@ exec --no-startup-id myi3lock
 exec --no-startup-id dex -a -s ~/.config/autostart
 # exec --no-startup-id thunar --daemon
 exec --no-startup-id systemctl --user restart sunshine.service
-exec --no-startup-id sudo rog-control-center
+# exec --no-startup-id sudo rog-control-center
 exec_always --no-startup-id sleep 10 && my-mail-sync
 bindsym $mod+Shift+b exec --no-startup-id feh --randomize --bg-fill --recursive ~/Pictures/Wallpapers/Meumy ~/Pictures/Wallpapers/Meumy
 # Add dynamic background!!
 bindsym $mod+b exec --no-startup-id toggle-anime-bg
 # tray bar
 bindsym $mod+m exec --no-startup-id toggle-tray
+# bind nnn
+bindsym $mod+n exec --no-startup-id alacritty-nnn
+# rofi bitwarden
+bindsym $mod+Mod1+v exec --no-startup-id rofi-rbw
 
 # Start KDE connect
 exec --no-startup-id /usr/lib/kdeconnectd
@@ -120,6 +131,7 @@ default_floating_border pixel 2
 
 # kill focused window
 bindsym $mod+Shift+q kill
+# bindsym Mod1+Shift+q kill
 
 ## TIM Settings
 # don't focus TIM's Face
@@ -142,6 +154,9 @@ for_window [class="wemeetapp"] floating enable
 for_window [class="flameshot"] floating enable
 for_window [class="icalingua"] floating enable
 for_window [class="netease-cloud-music"] floating disable
+# for_window [title="Snipper - Snipaste"] fullscreen enable
+for_window [instance="Snipaste"] floating enable
+for_window [instance="Snipaste"] sticky enable
 # for_window [class="tim.exe"] focus_on_window_activation none
 # for_window [class="gtksu"] floating enable
 
@@ -167,7 +182,8 @@ bindsym $mod+l focus right
 bindsym $mod+Shift+t exec --no-startup-id picom-trans -t -c
 
 # DeepL Translation
-bindsym $mod+t exec --no-startup-id deepl-clipboard
+bindsym $mod+Mod1+t exec --no-startup-id deepl-clipboard
+bindsym $mod+t sticky toggle
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left

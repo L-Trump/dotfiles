@@ -1,3 +1,4 @@
+#!/bin/bash
 export LANG=en_GB.UTF-8
 export LANGUAGE=zh_CN:en_US
 session=${1:-i3}
@@ -20,6 +21,7 @@ xrandr --output eDP --scale 1.35x1.35
 # xrandr --output HDMI-A-0 --primary --pos 2592x0 --scale 0.9999x0.9999 --auto
 # xrandr --output HDMI-A-0 --primary --pos 2592x0 --scale 1.35x1.35 --auto
 xrandr --output HDMI-A-0 --primary --pos 2592x0 --auto
+# xrandr --output HDMI-A-0 --primary --scale 1.2x1.2 --pos 2592x0 --auto
 # xrandr --output eDP --auto --output HDMI-A-0 --auto --primary --scale 0.75x0.75 --right-of eDP 
 case $lang in
     en       ) export LANG=en_GB.UTF-8;;

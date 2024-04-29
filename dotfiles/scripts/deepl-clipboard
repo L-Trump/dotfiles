@@ -19,6 +19,8 @@ def deepl_api(text):
 
 if __name__ == "__main__":
     text = paste()  # 获取剪贴板
+    print("Hello", text)
+    print(PyDeepLX.translate(text, 'EN', 'ZH'))
     translate_results = deepl_api(text)  # 调用翻译接口
     print(translate_results, file=open("/tmp/deepl.txt", "w"))  # 将翻译结果写入文件
     os.system(r"zenity --title=Deepl --text-info --filename=/tmp/deepl.txt")  # 显示翻译结果

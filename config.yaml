@@ -4,10 +4,13 @@ config:
   backup: true
   create: true
   dotpath: dotfiles
+  import_variables:
+  - profiles.d/common.var.yaml
 dotfiles:
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
+    template: true
   f_zshrc:
     src: shell/zshrc
     dst: ~/.zshrc
@@ -17,11 +20,18 @@ dotfiles:
   f_zprofile:
     src: shell/zprofile
     dst: ~/.zprofile
+  d_fish:
+    src: shell/fish
+    dst: ~/.config/fish
+    chmod: '700'
   d_tmux:
     src: shell/tmux
     dst: ~/.config/tmux
     actions:
     - lns "~/.config/tmux/tmux.conf" "~/.tmux.conf"
+    upignore:
+    - plugins
+    - plugins/*
   f_xresources:
     src: desktop/Xresources
     dst: ~/.Xresources
@@ -68,9 +78,9 @@ dotfiles:
     src: nvim
     dst: ~/.config/nvim
     upignore:
-      - '*'
+    - '*'
     cmpignore:
-      - '*'
+    - '*'
   f_offlineimap.py:
     src: mail/offlineimap.py
     dst: ~/.offlineimap.py
@@ -100,14 +110,15 @@ dotfiles:
     dst: ~/.config/mpv
     chmod: '700'
     upignore:
-      - watch_later
+    - watch_later
+    - watch_later/*
   d_onedrive:
     src: applications/onedrive
     dst: ~/.config/onedrive
     upignore:
-      - '!config'
-      - '!sync_list'
-      - '[a-zA-Z0-9.\-]*'
+    - '!config'
+    - '!sync_list'
+    - '[a-zA-Z0-9.\-]*'
   d_custom_scripts:
     src: scripts
     dst: ~/.local/bin/custom_scripts

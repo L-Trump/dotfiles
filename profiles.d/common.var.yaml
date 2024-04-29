@@ -1,0 +1,6 @@
+variables:
+  user:
+    name: L-Trump
+    email: ltrump@163.com
+  # git:
+  #   proxy: http://127.0.0.1:7893
