@@ -128,3 +128,8 @@ profiles:
   ltrumpArch:
     dotfiles:
     - ALL
+  server:
+    dotfiles:
+    - d_fish
+    - d_tmux
+    - d_custom_scripts
