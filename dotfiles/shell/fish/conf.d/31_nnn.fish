@@ -17,20 +17,21 @@ if command -qv nnn
         end
     end
     trap nnn_cd EXIT
-end
 
-# With the original prompt function renamed, we can override with our own.
-if not test -z "$NNNLVL"
-    function fish_prompt
-        # Save the return status of the last command.
-        set -l old_status $status
+    # With the original prompt function renamed, we can override with our own.
+    if not test -z "$NNNLVL"
+        functions -c fish_prompt _old_prompt_before_nnn
+        function fish_prompt
+            # Save the return status of the last command.
+            set -l old_status $status
 
-        # Output the venv prompt; color taken from the blue of the Python logo.
-        printf "%s%s%s" (set_color -o) "(In NNN$NNNLVL) " (set_color normal)
+            # Output the venv prompt; color taken from the blue of the Python logo.
+            printf "\n%s%s%s" (set_color -o) "(In NNN$NNNLVL) " (set_color normal)
 
-        # Restore the return status of the previous command.
-        echo "exit $old_status" | .
-        # Output the original/"old" prompt.
-        _old_prompt_before_nnn
+            # Restore the return status of the previous command.
+            echo "exit $old_status" | .
+            # Output the original/"old" prompt.
+            _old_prompt_before_nnn
+        end
     end
 end

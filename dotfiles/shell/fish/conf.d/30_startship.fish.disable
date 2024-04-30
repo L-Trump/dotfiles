@@ -1,5 +1,3 @@
-starship init fish | source
-
-# NNN Prompt
-functions -c fish_prompt _old_prompt_before_nnn
-
+if command -qv starship
+    starship init fish | source
+end
