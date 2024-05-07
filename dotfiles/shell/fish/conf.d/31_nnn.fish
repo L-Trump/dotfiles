@@ -1,4 +1,5 @@
 if command -qv nnn
+    set -gx NNN_OPTS "rx"
     set -gx NNN_COLORS "2136"
     set -gx NNN_ARCHIVE "\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)\$"
     set -gx NNN_PLUG 'z:autojump;d:dragdrop;s:!fish -i*;e:-!nvim "$nnn"*;p:preview-tui;c:!convert "$nnn" png:- | xclip -sel clipboard -t image/png*'
