@@ -127,11 +127,15 @@ dotfiles:
   d_dunst:
     src: config/dunst
     dst: ~/.config/dunst
+  d_rofi:
+    src: config/rofi
+    dst: ~/.config/rofi
 profiles:
   ltrumpArch:
     dotfiles:
     - ALL
     - d_dunst
+    - d_rofi
   server:
     dotfiles:
     - d_fish
