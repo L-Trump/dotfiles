@@ -100,7 +100,7 @@ exec --no-startup-id xset s 0
 # exec --no-startup-id xss-lock -- i3lock -n -c 000011
 exec --no-startup-id xss-lock --transfer-sleep-lock -- myi3lock --nofork
 # exec --no-startup-id spectacle -s
-exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
+# exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id xset dpms 6000 8000 0
 # exec --no-startup-id compton -b
 exec --no-startup-id ~/.fehbg

@@ -124,10 +124,14 @@ dotfiles:
     dst: ~/.local/bin/custom_scripts
     actions:
     - lns '~/.local/bin/custom_scripts/*' '~/.local/bin/'
+  d_dunst:
+    src: config/dunst
+    dst: ~/.config/dunst
 profiles:
   ltrumpArch:
     dotfiles:
     - ALL
+    - d_dunst
   server:
     dotfiles:
     - d_fish
