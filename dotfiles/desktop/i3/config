@@ -108,6 +108,7 @@ exec --no-startup-id myi3lock
 exec --no-startup-id dex -a -s ~/.config/autostart
 # exec --no-startup-id thunar --daemon
 exec --no-startup-id systemctl --user restart sunshine.service
+exec --no-startup-id systemctl --user restart xsettingsd.service
 # exec --no-startup-id sudo rog-control-center
 exec_always --no-startup-id sleep 10 && my-mail-sync
 bindsym $mod+Shift+b exec --no-startup-id feh --randomize --bg-fill --recursive ~/Pictures/Wallpapers/Meumy ~/Pictures/Wallpapers/Meumy
@@ -115,10 +116,13 @@ bindsym $mod+Shift+b exec --no-startup-id feh --randomize --bg-fill --recursive 
 bindsym $mod+b exec --no-startup-id toggle-anime-bg
 # tray bar
 bindsym $mod+m exec --no-startup-id toggle-tray
+# bindsym $mod+m exec --no-startup-id polybar-msg action "#tray.module_toggle"
 # bind nnn
 bindsym $mod+n exec --no-startup-id alacritty-nnn
 # rofi bitwarden
 bindsym $mod+Mod1+v exec --no-startup-id rofi-rbw
+# uTools
+bindsym $mod+u exec --no-startup-id utools
 
 # Start KDE connect
 exec --no-startup-id /usr/lib/kdeconnectd
@@ -149,6 +153,7 @@ for_window [instance="PacketTracer"] floating enable
 for_window [instance="qq.exe"] floating enable
 for_window [instance="qq"] floating enable
 for_window [instance="mainwindow.py"] floating enable
+for_window [class="Zotero" instance="Alert"] floating enable
 for_window [class="weixin"] floating enable
 for_window [class="wemeetapp"] floating enable
 for_window [class="flameshot"] floating enable
@@ -159,6 +164,8 @@ for_window [instance="Snipaste"] floating enable
 for_window [instance="Snipaste"] sticky enable
 # for_window [class="tim.exe"] focus_on_window_activation none
 # for_window [class="gtksu"] floating enable
+for_window [instance="utools"] floating enable
+for_window [instance="utools"] sticky enable
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run

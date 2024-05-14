@@ -23,7 +23,7 @@ dotfiles:
   d_fish:
     src: shell/fish
     dst: ~/.config/fish
-    chmod: '700'
+    chmod: '644'
   d_tmux:
     src: shell/tmux
     dst: ~/.config/tmux
@@ -59,18 +59,24 @@ dotfiles:
   d_icons:
     src: desktop/appearance/icons
     dst: ~/.icons
-    chmod: '700'
+    chmod: '644'
   f_fehbg:
     src: desktop/appearance/fehbg
     dst: ~/.fehbg
-    chmod: '754'
+    chmod: '755'
   d_merry_cursors:
     src: desktop/appearance/merry_cursors
     dst: ~/.local/share/icons/merry_cursors
   d_gtk-3.0:
     src: desktop/appearance/gtk-3.0
     dst: ~/.config/gtk-3.0
-    chmod: '700'
+    chmod: '644'
+  f_gtkrc-2.0:
+    src: desktop/appearance/gtkrc-2.0
+    dst: ~/.gtkrc-2.0
+  f_xsettingsd:
+    src: desktop/appearance/xsettingsd
+    dst: ~/.xsettingsd
   d_alacritty:
     src: terminal/alacritty
     dst: ~/.config/alacritty
@@ -108,7 +114,7 @@ dotfiles:
   d_mpv:
     src: applications/mpv
     dst: ~/.config/mpv
-    chmod: '700'
+    chmod: '644'
     upignore:
     - watch_later
     - watch_later/*
@@ -124,18 +130,38 @@ dotfiles:
     dst: ~/.local/bin/custom_scripts
     actions:
     - lns '~/.local/bin/custom_scripts/*' '~/.local/bin/'
+    chmod: '755'
   d_dunst:
-    src: config/dunst
+    src: applications/dunst
     dst: ~/.config/dunst
   d_rofi:
-    src: config/rofi
+    src: applications/rofi
     dst: ~/.config/rofi
+  f_config.yaml:
+    src: desktop/appearance/darkman/config.yaml
+    dst: ~/.config/darkman/config.yaml
+  d_light-mode.d:
+    src: desktop/appearance/darkman/light-mode.d
+    dst: ~/.local/share/light-mode.d
+    chmod: '755'
+  d_dark-mode.d:
+    src: desktop/appearance/darkman/dark-mode.d
+    dst: ~/.local/share/dark-mode.d
+    chmod: '755'
 profiles:
   ltrumpArch:
     dotfiles:
     - ALL
     - d_dunst
     - d_rofi
+    - f_gtkrc-2.0
+    - f_config.yaml
+    - f_config.yaml
+    - f_config.yaml
+    - f_config.yaml
+    - d_light-mode.d
+    - d_dark-mode.d
+    - f_xsettingsd
   server:
     dotfiles:
     - d_fish
