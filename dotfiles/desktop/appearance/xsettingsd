@@ -8,4 +8,5 @@ Gtk/MenuImages 1
 Gtk/PrimaryButtonWarpsSlider 0
 Gtk/ToolbarStyle 3
 Net/IconThemeName "Adwaita"
-Net/ThemeName "Adwaita"
+Net/ThemeName "Adwaita-dark"
+Xft/DPI 147456

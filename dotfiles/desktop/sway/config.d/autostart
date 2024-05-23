@@ -1,0 +1,43 @@
+#!/bin/env bash
+# This is a fake shebang for vim highlights!
+
+# NetworkManager tray icon
+exec nm-applet
+
+# clipboard manager
+exec wl-paste -t text --watch clipman store --no-persist
+
+# XSettings for XWayland GTK
+exec systemctl --user restart xsettingsd.service
+
+# Gnome Polkit
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
+
+# Polybar / Waybar
+# exec_always  ~/.config/polybar/launch.sh --blocks
+# exec waybar
+
+# Screenshots Apps
+# exec flameshot
+# exec snipaste
+
+# Start KDE connect
+exec /usr/lib/kdeconnectd
+# exec /opt/Synergy/synergy-service -d
+
+# application autostart
+exec dex -a -s ~/.config/autostart
+
+# merge Xresources
+exec xrdb -merge ~/.Xresources
+
+# gamma manager, mainly for pseudo brightness control
+exec wl-gammarelay-rs
+
+# IME fcitx
+exec fcitx5
+exec_always picom
+exec_always pkill nnn-dbus; ~/.local/bin/nnn-dbus
+exec systemctl --user restart sunshine.service
+exec_always sleep 10 && my-mail-sync
+# exec sudo rog-control-center

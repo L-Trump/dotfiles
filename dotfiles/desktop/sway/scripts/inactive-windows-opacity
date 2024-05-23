@@ -1,0 +1,35 @@
+#!/bin/bash
+
+inactive_opacity=0.8
+active_opacity=1.0
+trans_mark="no_trans"
+ignore_mark="ps_placeholder"
+
+# 设置所有窗口的透明度为 0.8
+swaymsg "[all] opacity set $inactive_opacity"
+# 设置标记为 "no_trans" 的窗口的透明度为 $active_opacity
+swaymsg "[con_mark=\"no_trans\"] opacity set $active_opacity"
+# 设置当前窗口的透明度为 $active_opacity（尽管这可能被前面的命令覆盖）
+swaymsg "opacity set $active_opacity"
+
+# 获取当前聚焦容器的 ID
+cur_con_id=$(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .id')
+
+# 订阅窗口事件
+swaymsg -t subscribe -m '[ "window" ]' | while IFS= read -r line; do
+    # 检查窗口变化是否为焦点变化
+    if [[ $(echo "$line" | jq -r '.change') == 'focus' ]]; then
+        # 如果当前聚焦容器的 ID 不为空
+        if [[ -n "$cur_con_id" ]]; then
+            # 设置前一个聚焦容器的透明度为 $inactive_opacity
+            swaymsg "[con_id=\"$cur_con_id\" con_mark=\"$ignore_mark.*\"] nop" >/dev/null || \
+            swaymsg "[con_id=\"$cur_con_id\" con_mark=\"$trans_mark.*\"] opacity set $active_opacity" >/dev/null || \
+            swaymsg "[con_id=\"$cur_con_id\"] opacity set $inactive_opacity"
+        fi
+        # 更新当前聚焦容器的 ID
+        cur_con_id=$(echo "$line" | jq -r '.container.id')
+        # 设置新聚焦容器的透明度为 $active_opacity
+        swaymsg "[con_id=\"$cur_con_id\" con_mark=\"$ignore_mark.*\"] nop" >/dev/null || \
+        swaymsg "[con_id=\"$cur_con_id\"] opacity set $active_opacity"
+    fi
+done

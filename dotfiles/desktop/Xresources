@@ -6,16 +6,16 @@
 ! Repository: https://github.com/arcticicestudio/nord-xresources
 ! License:    MIT
 
-# Xft.dpi: 110
+! Xft.dpi: 110
 Xft.dpi:  144
 rofi.dpi: 144
 *.dpi:    144
-# Xft.dpi:  110
-# rofi.dpi: 110
-# *.dpi:    110
-# Xft.dpi:  96
-# rofi.dpi: 96
-# *.dpi:    96
+! Xft.dpi:  110
+! rofi.dpi: 110
+! *.dpi:    110
+! Xft.dpi:  96
+! rofi.dpi: 96
+! *.dpi:    96
 #define nord0 #2E3440
 #define nord1 #3B4252
 #define nord2 #434C5E

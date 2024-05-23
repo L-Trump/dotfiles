@@ -41,12 +41,21 @@ dotfiles:
   d_i3:
     src: desktop/i3
     dst: ~/.config/i3
+  d_sway:
+    src: desktop/sway
+    dst: ~/.config/sway
   d_picom:
     src: desktop/picom
     dst: ~/.config/picom
   d_polybar:
     src: desktop/polybar/blocks
     dst: ~/.config/polybar/blocks
+  d_waybar:
+    src: desktop/waybar
+    dst: ~/.config/waybar
+  d_swaylock:
+    src: desktop/swaylock
+    dst: ~/.config/swaylock
   f_stalonetrayrc:
     src: desktop/stalonetrayrc
     dst: ~/.stalonetrayrc
@@ -152,16 +161,6 @@ profiles:
   ltrumpArch:
     dotfiles:
     - ALL
-    - d_dunst
-    - d_rofi
-    - f_gtkrc-2.0
-    - f_config.yaml
-    - f_config.yaml
-    - f_config.yaml
-    - f_config.yaml
-    - d_light-mode.d
-    - d_dark-mode.d
-    - f_xsettingsd
   server:
     dotfiles:
     - d_fish

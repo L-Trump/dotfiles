@@ -1,0 +1,4 @@
+#!/bin/bash
+trans_mark="no_trans"
+cur_con_id=$(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .id')
+swaymsg "[con_id=\"$cur_con_id\"] mark --toggle \"${trans_mark}_${cur_con_id}\""

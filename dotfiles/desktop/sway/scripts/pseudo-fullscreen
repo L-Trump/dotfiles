@@ -1,0 +1,56 @@
+#!/bin/bash
+
+active_output=$(swaymsg -t get_outputs | jq "first(map(select(.focused == true)))[0]")
+active_workspace=$(swaymsg -t get_workspaces | jq 'first(map(select(.focused == true)))[0]')
+x_offset=$(echo $active_workspace | jq '.rect.x')
+y_offset=$(echo $active_workspace | jq '.rect.y')
+width=$(echo $active_workspace | jq '.rect.width')
+height=$(echo $active_workspace | jq '.rect.height')
+ws_id=$(echo $active_workspace | jq '.id')
+ws_name=$(echo $active_workspace | jq '.name')
+ws_name_raw=$(echo $ws_name | jq -r)
+active_workspace=$(swaymsg -t get_tree | jq ".. | select(.type? == \"workspace\") | select(.id == $ws_id)")
+
+PS_FULL_MARK="ps_full_$ws_id"
+PLACEHOLDER_MARK="ps_placeholder_$ws_id"
+PLACEHOLDER_EXEC="alacritty msg create-window -o 'window.opacity=0' --class ${PLACEHOLDER_MARK}_${ws_id} -e sh || alacritty -o 'window.opacity=0' --class ${PLACEHOLDER_MARK}_${ws_id} -e sh"
+                 # "|| alacritty -o 'window.opacity=0' --class ${PLACEHOLDER_MARK}_${ws_id} -e sh"
+
+current_full=$(echo $active_workspace | jq -r " .. | select(.marks?) | select(.marks[] | contains(\"$PS_FULL_MARK\")) | .id")
+
+# if already have a fullscreen app
+if [[ -n "$current_full" ]]; then
+    placeholder=$(echo $active_workspace | jq " .. | select(.marks?) | select(.marks[] | contains(\"$PLACEHOLDER_MARK\")) | .id")
+    echo $placeholder
+    if [[ -n "$placeholder" ]]; then
+        swaymsg "[workspace=\"^$ws_name_raw\$\"] opacity set 0.8;" \
+                "[con_id=\"$current_full\"] opacity set 1.0," \
+                "swap container with con_id \"$placeholder\"," \
+                "unmark $PS_FULL_MARK, focus"
+        swaymsg "[con_id=\"$placeholder\"] unmark, kill"
+    else
+        swaymsg "[workspace=\"^$ws_name_raw\$\"] opacity set 0.8;" \
+                "[con_id=\"$current_full\"] opacity set 1.0; floating disable, unmark $PS_FULL_MARK"
+    fi
+else
+    current_full=$(swaymsg -t get_tree | jq -r '.. | select(.type?) | select(.focused==true) | .id')
+    swaymsg "exec $PLACEHOLDER_EXEC"
+    while [[ -z "$(swaymsg -t get_tree | grep ${PLACEHOLDER_MARK})" ]]; do
+        sleep 0
+    done
+    swaymsg "[workspace=\"^$ws_name_raw\$\"] opacity set 0;" \
+            "[app_id=\"${PLACEHOLDER_MARK}\"] mark --add $PLACEHOLDER_MARK," \
+            "opacity set 0, floating enable," \
+            "resize set $width $height," \
+            "move absolute position $x_offset $y_offset," \
+            "swap container with con_id \"$current_full\""
+    swaymsg "[con_id=\"$current_full\"] focus, opacity set 1," \
+            "mark --add $PS_FULL_MARK," \
+            "resize set $width $height," \
+            "move absolute position $x_offset $y_offset"
+    sleep 0.1;
+    swaymsg "[con_id=\"$current_full\"] resize set $width $height," \
+            "move absolute position $x_offset $y_offset"
+fi
+
+echo $x_offset $y_offset $width $height

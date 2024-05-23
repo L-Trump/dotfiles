@@ -1,0 +1,14 @@
+#!/bin/env bash
+# This is a fake shebang for vim highlights!
+
+# output eDP-1 scale 1.25 adaptive_sync on
+# output HDMI-A-1 scale 1.75 adaptive_sync on
+output eDP-1 scale 0.8 adaptive_sync on
+output HDMI-A-1 adaptive_sync on
+
+exec_always --no-startup-id ~/.wlbg
+exec_always xrandr --output $(xrandr | grep -m 1 XWAYLAND | awk '{print $1;}') --primary
+
+bindsym $mod+p output eDP pos 0 0; output eDP scale 1.35; output HDMI-A-0 pos 2592 0; reload
+
+input type:keyboard xkb_numlock enabled

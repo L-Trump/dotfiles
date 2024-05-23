@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+PID_FILE="$HOME/.dynamic_bg_run"
+if [ -f "$PID_FILE" ]; then
+    rm "$PID_FILE"
+    pkill -9 mpvpaper
+    echo "Closed Dynamic Background"
+else
+    touch "$PID_FILE"
+    prime-run mpvpaper -f -o "no-audio --mute=yes --no-osc --no-osd-bar --quiet --override-display-fps=15 --loop" -p HDMI-A-1 /home/ltrump/.local/share/Steam/steamapps/workshop/content/431960/2923831977/横屏.mp4
+    prime-run mpvpaper -f -o "no-audio --mute=yes --no-osc --no-osd-bar --quiet --override-display-fps=15 --loop" -p eDP-1 ~/Pictures/WallpaperEngine/contents/2987671258/合成\ 1.mp4
+    echo "Start Dynamic Background"
+fi
