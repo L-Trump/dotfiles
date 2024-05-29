@@ -36,8 +36,7 @@ exec wl-gammarelay-rs
 
 # IME fcitx
 exec fcitx5
-exec_always picom
-exec_always pkill nnn-dbus; ~/.local/bin/nnn-dbus
+exec_always sleep3; pkill nnn-dbus; ~/.local/bin/nnn-dbus
 exec systemctl --user restart sunshine.service
 exec_always sleep 10 && my-mail-sync
 # exec sudo rog-control-center

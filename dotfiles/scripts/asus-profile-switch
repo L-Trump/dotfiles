@@ -1,7 +1,7 @@
 #!/bin/bash
 
 asusctl profile -n
-current_profile=$(asusctl profile -p | awk '{print $4}')
+current_profile=$(asusctl profile -p | grep profile | awk '{print $4}')
 echo "Current Profile: ${current_profile}"
 
 case $current_profile in

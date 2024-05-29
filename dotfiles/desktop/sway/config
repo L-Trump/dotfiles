@@ -122,7 +122,7 @@ for_window [class="weixin"] floating enable
 for_window [class="wemeetapp"] floating enable
 for_window [class="flameshot"] floating enable
 for_window [class="icalingua"] floating enable
-for_window [class="Zotero"] floating enable
+for_window [app_id="Zotero" title="进度"] floating enable
 for_window [class="netease-cloud-music"] floating disable
 for_window [class="xwaylandvideobridge"] floating enable
 # for_window [title="Snipper - Snipaste"] fullscreen enable
